@@ -98,9 +98,9 @@ Scikit-learn
 ## ▶️ How to Run
 Clone the repository:
 
-git clone <your-repo-link>
+git clone <https://github.com/LikithaTummapudi/Qskill-Internship-Projects.git>
 
-cd <repo-name>
+cd <Qskill-Internship-Projects>
 
 Install required libraries:
 
