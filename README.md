@@ -100,7 +100,7 @@ Clone the repository:
 
 git clone <https://github.com/LikithaTummapudi/Qskill-Internship-Projects.git>
 
-cd <Qskill-Internship-Projects>
+cd Qskill-Internship-Projects
 
 Install required libraries:
 
