@@ -34,7 +34,7 @@ class dataAnalyzer:
             print("\n Standard Deviation: ",std)
 
         else:
-            print(f"Coulumn {column_name} is not found.")
+            print(f"Column {column_name} is not found.")
 
 
         
