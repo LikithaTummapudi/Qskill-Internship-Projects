@@ -25,7 +25,6 @@ class dataAnalyzer:
         if column_name in self.df.columns:
 
             #Average=Mean
-            
             mean=self.df[column_name].mean()
             median=self.df[column_name].median()
             std=self.df[column_name].std()
@@ -64,7 +63,6 @@ class dataAnalyzer:
         print(f"\n Scatter plot saved as 'scatter_plot_{x_col}_vs_{y_col}.png'")
 
         #Calculating Correlation
-
         correlation=self.df[x_col].corr(self.df[y_col])
         print(f"Correlation between {x_col} and {y_col}: {correlation:.3f}")
     
