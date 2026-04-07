@@ -124,15 +124,15 @@ class dataAnalyzer:
         print(f"- Lowest frequency category: {lowest} ({value_counts.min()})")
 
 
-    # ----------------Outliers detection using IQR--------------
-    num_col = self.df.select_dtypes(include=['number']).columns[0]  # first numeric column
-    Q1 = self.df[num_col].quantile(0.25)
-    Q3 = self.df[num_col].quantile(0.75)
-    IQR = Q3 - Q1
-    lower_bound = Q1 - 1.5 * IQR
-    upper_bound = Q3 + 1.5 * IQR
-    outliers = self.df[(self.df[num_col] < lower_bound) | (self.df[num_col] > upper_bound)]
-    print(f"- Number of outliers detected: {len(outliers)}")
+        # ----------------Outliers detection using IQR--------------
+        num_col = self.df.select_dtypes(include=['number']).columns[0]  # first numeric column
+        Q1 = self.df[num_col].quantile(0.25)
+        Q3 = self.df[num_col].quantile(0.75)
+        IQR = Q3 - Q1
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+        outliers = self.df[(self.df[num_col] < lower_bound) | (self.df[num_col] > upper_bound)]
+        print(f"- Number of outliers detected: {len(outliers)}")
 
 
 
