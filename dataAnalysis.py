@@ -65,4 +65,24 @@ class dataAnalyzer:
         #Calculating Correlation
         correlation=self.df[x_col].corr(self.df[y_col])
         print(f"Correlation between {x_col} and {y_col}: {correlation:.3f}")
+
+    def bar_graph(self,col_name):
+
+        plt.figure(figsize=(10,6))
+
+        #If the value has too many unique values,consider only the top 10
+        value_counts=self.df[col_name].value_counts().head(10)
+
+        plt.bar(range(len(value_counts)),value_counts.values,color="blue",edgecolor="navy")
+        plt.xlabel(col_name,fontsize=12)
+        plt.ylabel('Frequency',fontsize=12)
+        plt.title(f"Bar Chart for {col_name}")
+        plt.xticks(range(len(value_counts)),value_counts.index,rotation=45,ha='right')
+        plt.tight_layout()
+        plt.savefig(f'bar_chart_of_{col_name}.png',dpi=300,bbox_inches='tight')
+        plt.show()
+        print(f"\nbar_chart_of_{col_name}.png saved!")
+
+
+
     
