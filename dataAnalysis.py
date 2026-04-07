@@ -109,6 +109,32 @@ class dataAnalyzer:
         sorted_pairs = corr_pairs.abs().sort_values(ascending=False)
         print(sorted_pairs.head(5))
         
+    def generate_insights(self):
+
+        #Number of rows and columns
+        print(f"\n1. Dataset contains {len(self.df)} records and {len(self.df.columns)} features")
+
+        # ------------------BAR CHART INSIGHTS------------------
+        col_name = self.df.columns[0]  # taking first column (you can change if needed)
+        value_counts = self.df[col_name].value_counts()
+        highest = value_counts.idxmax()
+        lowest = value_counts.idxmin()
+        print("BAR CHART INSIGHTS:")
+        print(f"- Highest frequency category: {highest} ({value_counts.max()})")
+        print(f"- Lowest frequency category: {lowest} ({value_counts.min()})")
+
+
+    # ----------------Outliers detection using IQR--------------
+    num_col = self.df.select_dtypes(include=['number']).columns[0]  # first numeric column
+    Q1 = self.df[num_col].quantile(0.25)
+    Q3 = self.df[num_col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+    outliers = self.df[(self.df[num_col] < lower_bound) | (self.df[num_col] > upper_bound)]
+    print(f"- Number of outliers detected: {len(outliers)}")
+
+
 
 
 
