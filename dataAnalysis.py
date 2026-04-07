@@ -81,7 +81,34 @@ class dataAnalyzer:
         plt.tight_layout()
         plt.savefig(f'bar_chart_of_{col_name}.png',dpi=300,bbox_inches='tight')
         plt.show()
-        print(f"\nbar_chart_of_{col_name}.png saved!")
+        print(f"\n bar_chart_of_{col_name}.png saved!")
+
+    def heatmap(self):
+        # Selecting only the numerical columns
+        numerical_cols = self.df.select_dtypes(include=[np.number])
+        
+        plt.figure(figsize=(12, 8))
+        
+        # Calculate correlation matrix
+        correlation_matrix = numerical_cols.corr()
+        
+        # Create heatmap
+        sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0,
+                   fmt='.2f', square=True, linewidths=1, cbar_kws={"shrink": 0.8})
+        plt.title("Correlation Heatmap", fontsize=14, fontweight='bold', pad=20)
+        plt.tight_layout()
+        plt.savefig('correlation_heatmap.png', dpi=300, bbox_inches='tight')
+        plt.show()
+        
+        print("\n Correlation heatmap saved as 'correlation_heatmap.png'")
+        
+        # Printing the strongest correlations
+        print("\nStrongest Correlations:")
+        corr_pairs = correlation_matrix.unstack()
+        corr_pairs = corr_pairs[corr_pairs < 1]  # Removing self-correlations
+        sorted_pairs = corr_pairs.abs().sort_values(ascending=False)
+        print(sorted_pairs.head(5))
+        
 
 
 
