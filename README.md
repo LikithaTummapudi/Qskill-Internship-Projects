@@ -29,7 +29,7 @@ A Python-based data analysis and visualization tool that generates insights, sta
 
 ## ▶️ How to Run
 
-1. Clone the repository:
+1. Clone the repository: https://github.com/LikithaTummapudi/Data-Analysis-And-Visualization.git
 2. Navigate to the project folder: cd Data-Analysis-And-Visualization
 3. Install dependencies: pip install pandas numpy matplotlib seaborn
 4. Run the script: python main.py
