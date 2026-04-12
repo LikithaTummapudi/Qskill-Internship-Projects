@@ -7,7 +7,7 @@ import seaborn as sns
 
 class dataAnalyzer:
     def __init__(self,csv_file):
-        self.df=pd.read_csv(csv_file,index_col=0)
+        self.df=pd.read_csv(csv_file)
         print("Data set loaded successfully")
         print(f"Shape:{self.df.shape}")
         print("The first 5 rows: ")
@@ -19,7 +19,7 @@ class dataAnalyzer:
         print("Dataset Description:\n",self.df.describe())
         print("Checking for Missing Values:\n",self.df.isnull().sum())
 
-    def calculate_centraltendancies(self,column_name):
+    def statistics(self,column_name):
         '''In this method,we calculate the mean, median 
         and standard deviation of a particular column.'''
         if column_name in self.df.columns:
@@ -41,7 +41,7 @@ class dataAnalyzer:
     def scatter_plot(self,x_col,y_col):
 
         plt.figure(figsize=(10, 6))
-        plt.scatter(x_col,y_col,c="red")
+        plt.scatter(self.df[x_col],self.df[y_col],c="red")
         plt.xlabel(x_col,fontsize=12)
         plt.ylabel(y_col,fontsize=12)
         plt.title("Scatter plot",fontsize=15,fontweight="bold")
@@ -54,10 +54,10 @@ class dataAnalyzer:
         p=np.poly1d(z)  #stores the cofficients of z in p in a vector form
          
         #plotting the trend line
-        plt.plot(self.df[x_col],p(self.df[y_col]),"r--",alpha=0.8,linewidth=2,label="TrendLine")
-        plt.lengend()
+        plt.plot(self.df[x_col],p(self.df[x_col]),"r--",alpha=0.8,linewidth=2,label="TrendLine")
+        plt.legend()
         plt.tight_layout()
-        plt.savefig(f'scatter plot:{x_col} VS {y_col}.png',dip=300,bbox_inches='tight')
+        plt.savefig(f'scatter plot:{x_col} VS {y_col}.png',dpi=300,bbox_inches='tight')
         plt.show()
 
         print(f"\n Scatter plot saved as 'scatter_plot_{x_col}_vs_{y_col}.png'")
@@ -133,6 +133,45 @@ class dataAnalyzer:
         upper_bound = Q3 + 1.5 * IQR
         outliers = self.df[(self.df[num_col] < lower_bound) | (self.df[num_col] > upper_bound)]
         print(f"- Number of outliers detected: {len(outliers)}")
+
+if __name__ == "__main__":
+    #creating sample dataset
+    np.random.seed(40)
+    sample_data={
+            'Product': ['A','B','C','D','E']*20,
+            'Sales': np.random.randint(100, 1000, 100),
+            'Revenue': np.random.randint(5000, 50000, 100),
+            'Rating': np.random.uniform(3.0, 5.0, 100),
+            'Customers': np.random.randint(10, 200, 100)
+    }
+    sample_df = pd.DataFrame(sample_data)
+    sample_df.to_csv('sample_sales_data.csv', index=False)
+    print("Sample dataset created: sample_sales_data.csv")
+    csv_file = 'sample_sales_data.csv'
+
+    try:
+        analyzer = dataAnalyzer(csv_file)
+        analyzer.dataset_info()
+        #calculating statistics for 'Sales' column
+        analyzer.statistics('Sales')
+        analyzer.bar_graph('Sales')
+
+        #scatter plot for Sales and Revenue
+        analyzer.scatter_plot('Sales','Revenue')
+        #creating a heatmap
+        analyzer.heatmap()
+        analyzer.generate_insights()
+        print("\n"+"-"*20)
+        print("Analysis Complete! Check the generated PNG files for visualizations.")
+        print("-"*20)
+    except FileNotFoundError:
+        print(f"\n Error: File '{csv_file}' not found!")
+        print("Please ensure the CSV file exists in the current directory.")
+    except Exception as e:
+        print(f"\n Error occurred: {str(e)}")
+
+
+
 
 
 
