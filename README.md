@@ -1,120 +1,84 @@
-## 📌 Overview
+# 📊 Data Analyzer Project
 
-This repository contains a collection of Python-based projects developed as part of an internship, focusing on data analysis, machine learning, and numerical computing. The projects demonstrate practical applications of libraries such as Pandas, Matplotlib, NumPy, and Scikit-learn to solve real-world problems and build interactive tools.
+A Python-based data analysis and visualization tool that generates insights, statistics, and visualizations from a dataset.
 
-## 🚀 Projects Included
-### 1. 📈 Data Analysis & Visualization using Pandas and Matplotlib
+---
 
-This project focuses on loading and analyzing CSV datasets using Pandas. It includes:
+## 🚀 Features
 
-Data cleaning and preprocessing
+- 📂 Load and explore datasets
+- 📈 Statistical analysis (mean, median, standard deviation)
+- 📊 Data visualization:
+  - Bar charts
+  - Scatter plots with trendlines
+  - Correlation heatmaps
+- 🔍 Automatic insights generation
+- 📁 Export visualizations as PNG files
 
-Statistical analysis (mean, median, etc.)
-
-Visualization techniques:
-
-Bar charts
-
-Scatter plots
-
-Heatmaps
-
-#### Key Outcomes:
-
-Identified patterns and trends in data
-Derived insights through visual representation
-Built reusable functions for dataset analysis
-
-### 2. 🏠 House Price Prediction using Linear Regression
-
-This project implements a machine learning model to predict house prices based on various features.
-
-#### Features Used:
-
-Number of rooms
-
-
-Location
-
-Size (area)
-
-Other relevant attributes
-
-#### Workflow:
-
-Dataset collection (Kaggle)
-
-Data preprocessing (handling missing values, encoding, scaling)
-
-Model training using Linear Regression
-
-Model evaluation and prediction
-
-#### Key Outcomes:
-
-Built a predictive model for real estate pricing
-
-Understood feature impact on price
-
-Compared performance on different preprocessing techniques
-
-### 3. 🔢 Matrix Operations Tool using NumPy
-
-An interactive Python application that performs various matrix operations.
-
-#### Supported Operations:
-
-Matrix addition,
-Matrix subtraction,
-Matrix multiplication,
-Transpose and
-Determinant calculation
-
-#### Features:
-
-User input for matrices
-
-Structured output display
-
-Efficient computations using NumPy
-
-#### Key Outcomes:
-
-Strengthened understanding of linear algebra concepts
-
-Developed a user-friendly CLI-based tool
+---
 
 ## 🛠️ Technologies Used
-Python
 
-Pandas
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
 
-NumPy
-
-Matplotlib
-
-Scikit-learn
+---
 
 ## ▶️ How to Run
-Clone the repository:
 
-git clone <https://github.com/LikithaTummapudi/Qskill-Internship-Projects.git>
+1. Clone the repository:
+2. Navigate to the project folder: cd Data-Analysis-And-Visualization
+3. Install dependencies: pip install pandas numpy matplotlib seaborn
+4. Run the script: python main.py
 
-cd Qskill-Internship-Projects
+---
 
-Install required libraries:
+## 📊 Sample Dataset
 
-pip install pandas numpy matplotlib scikit-learn
+The project automatically generates a sample dataset with:
+- Product categories
+- Sales
+- Revenue
+- Ratings
+- Customer count
 
-Run individual project files:
+---
 
-python filename.py
+## 📸 Output
 
-## 📊 Key Learnings
-Data preprocessing and cleaning techniques
+The program generates:
+- Bar chart → `bar_chart_of_<column>.png`
+- Scatter plot → `scatter_plot_<x>_vs_<y>.png`
+- Heatmap → `correlation_heatmap.png`
 
-Data visualization for insight generation
+---
 
-Machine learning model development and evaluation
+## 🧠 Insights Generated
 
-Implementation of mathematical operations using NumPy
+- Dataset size and structure
+- Most frequent categories
+- Outlier detection using IQR method
+- Correlation between numerical features
+
+---
+
+## ⚠️ Notes
+
+- Ensure column names exist before analysis
+- Scatter plots work best with numerical columns
+- Large datasets may take more time for visualization
+
+---
+
+## 👨‍💻 Author
+
+Likitha Tummapudi
+
+---
+
+## ⭐ Contribute
+
+Feel free to fork this repo and improve it!
